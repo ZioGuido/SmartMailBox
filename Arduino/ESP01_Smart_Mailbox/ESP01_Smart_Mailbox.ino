@@ -91,6 +91,12 @@ void MQTT_connect()
 
 void setup()
 {
+  // Wait...
+  for (int i=5; i>0; i--)
+  {
+    delay(1000);
+  }
+
   // Connect to WiFi access point
   WiFi.begin(WLAN_SSID, WLAN_PASS);
   while (WiFi.status() != WL_CONNECTED)
@@ -110,9 +116,6 @@ void setup()
 
   // Publish to feed
   mailbox.publish(txtToPost.c_str());
-
-  // Wait 10 seconds
-  delay(10000);
 
   // Enter Deep Sleep Mode until the Reset pin is triggered
   ESP.deepSleep(0);
